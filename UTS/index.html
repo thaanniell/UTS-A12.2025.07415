@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="StudyMate membantu mahasiswa mengatur tugas, jadwal belajar, dan progres akademik.">
+
+    <title>StudyMate</title>
+
+    <!-- Bootstrap 5.3.8 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS buatan sendiri -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JavaScript buatan sendiri -->
+    <script src="js/script.js" defer></script>
+
+    <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path fill=%22%232563EB%22 d=%22M1 2.828C1 1.82 1.82 1 2.828 1H6.5c.69 0 1.354.274 1.844.763L8 1.419l-.344.344A2.6 2.6 0 0 1 9.5 1h3.672C14.18 1 15 1.82 15 2.828v10.344C15 14.18 14.18 15 13.172 15H9.5a2.6 2.6 0 0 0-1.5.475A2.6 2.6 0 0 0 6.5 15H2.828A1.828 1.828 0 0 1 1 13.172V2.828z%22/><path fill=%22%23ffffff%22 d=%22M8 3.5A2.5 2.5 0 0 0 6.5 3H2.5v9.5h4A2.5 2.5 0 0 1 8 13V3.5zm1 0V13a2.5 2.5 0 0 1 1.5-.5h4V3h-4A2.5 2.5 0 0 0 9 3.5z%22/></svg>"
+/>
+
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVBAR MOBILE
+    ========================================== -->
+
+    <nav class="navbar mobile-navbar d-lg-none">
+
+        <div class="container-fluid">
+
+            <a href="#dashboard" class="navbar-brand brand-name">
+                <i class="bi bi-journal-bookmark-fill"></i>
+                StudyMate
+            </a>
+
+            <button
+                class="btn menu-toggle"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#mobileMenu"
+                aria-controls="mobileMenu"
+                aria-label="Buka menu navigasi"
+            >
+                <i class="bi bi-list fs-3"></i>
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================
+         MENU MOBILE
+    ========================================== -->
+
+    <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="mobileMenu"
+        aria-labelledby="mobileMenuLabel"
+    >
+
+        <div class="offcanvas-header">
+
+            <h2 class="offcanvas-title brand-name" id="mobileMenuLabel">
+                <i class="bi bi-journal-bookmark-fill"></i>
+                StudyMate
+            </h2>
+
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Tutup menu"
+            ></button>
+
+        </div>
+
+
+        <div class="offcanvas-body">
+
+            <nav
+                class="nav flex-column sidebar-nav"
+                aria-label="Navigasi mobile"
+            >
+
+                <a class="nav-link active" href="#dashboard">
+                    <i class="bi bi-grid"></i>
+                    Dashboard
+                </a>
+
+                <a class="nav-link" href="#tasks">
+                    <i class="bi bi-check2-square"></i>
+                    Tugas Kuliah
+                </a>
+
+                <a class="nav-link" href="#schedule">
+                    <i class="bi bi-calendar3"></i>
+                    Jadwal Belajar
+                </a>
+
+                <a class="nav-link" href="#progress">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    Progress
+                </a>
+
+            </nav>
+
+            <div class="mobile-profile">
+
+    <div class="avatar">
+        N
+    </div>
+
+    <div>
+        <p class="profile-name mb-0">
+            Nathania Elysia
+        </p>
+
+        <span class="profile-role">
+            Mahasiswa Sistem Informasi
+        </span>
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         SIDEBAR DESKTOP
+    ========================================== -->
+
+    <aside class="sidebar d-none d-lg-flex flex-column">
+
+        <a href="#dashboard" class="brand-name sidebar-brand">
+
+            <span class="brand-icon">
+                <i class="bi bi-journal-bookmark-fill"></i>
+            </span>
+
+            StudyMate
+
+        </a>
+
+
+        <p class="sidebar-label">
+            MENU UTAMA
+        </p>
+
+
+        <nav
+            class="nav flex-column sidebar-nav"
+            aria-label="Navigasi utama"
+        >
+
+            <a class="nav-link active" href="#dashboard">
+
+                <i class="bi bi-grid"></i>
+                Dashboard
+
+            </a>
+
+
+            <a class="nav-link" href="#tasks">
+
+                <i class="bi bi-check2-square"></i>
+                Tugas Kuliah
+
+                <span
+                    class="nav-badge"
+                    id="sidebarTaskCount"
+                >
+                    0
+                </span>
+
+            </a>
+
+
+            <a class="nav-link" href="#schedule">
+
+                <i class="bi bi-calendar3"></i>
+                Jadwal Belajar
+
+            </a>
+
+
+            <a class="nav-link" href="#progress">
+
+                <i class="bi bi-graph-up-arrow"></i>
+                Progress
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-quote mt-auto">
+
+            <i class="bi bi-quote quote-icon"></i>
+
+            <p>
+                Study hard, your future self will thank you.
+            </p>
+
+            <span>
+                Today Reminder
+            </span>
+
+        </div>
+
+
+        <div class="sidebar-profile">
+
+            <div class="avatar">
+                N
+            </div>
+
+            <div>
+
+                <p class="profile-name mb-0">
+                    Nathania Elysia
+                </p>
+
+                <span class="profile-role">
+                    Mahasiswa Sistem Informasi
+                </span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         KONTEN UTAMA
+    ========================================== -->
+
+    <main
+        class="main-content"
+        id="dashboard"
+    >
+
+
+        <!-- =========================================
+             HEADER DASHBOARD
+        ========================================== -->
+
+        <header class="top-header">
+
+            <div>
+
+                <p class="eyebrow mb-1">
+                    STUDENT WORKSPACE
+                </p>
+
+                <h1 class="page-title">
+                    My Dashboard
+                </h1>
+
+                <p
+                    class="text-muted mb-0"
+                    id="currentDate"
+                >
+                    Selamat datang di StudyMate!
+                </p>
+
+            </div>
+
+    <div class="header-actions">
+
+        <button
+            type="button"
+            class="btn theme-toggle"
+            id="themeToggle"
+            aria-label="Aktifkan mode gelap"
+            title="Mode gelap"
+    >
+            <i class="bi bi-moon-stars-fill"></i>
+        </button>
+
+
+            <button
+                type="button"
+                class="btn btn-blue"
+                data-bs-toggle="modal"
+                data-bs-target="#taskModal"
+                id="headerAddTask"
+            >
+
+                <i class="bi bi-plus-lg me-2"></i>
+                Tambah Tugas
+
+            </button>
+
+        </div>
+        </header>
+
+
+        <!-- =========================================
+             WELCOME SECTION
+        ========================================== -->
+
+        <section
+            class="welcome-banner mb-4"
+            aria-labelledby="welcomeTitle"
+        >
+
+            <div class="welcome-content">
+
+                <span class="welcome-label">
+
+                    <i class="bi bi-sun me-1"></i>
+                    YOUR DAILY REMINDER
+
+                </span>
+
+
+                <h2 id="welcomeTitle">
+                    Hai, semangat belajar! ☕
+                </h2>
+
+
+                <p>
+                    Atur tugasmu, kelola waktumu, dan capai targetmu
+                    satu per satu. Kamu pasti bisa!
+                </p>
+
+
+                <a
+                    href="#tasks"
+                    class="btn btn-light welcome-button"
+                >
+
+                    Lihat Tugas Saya
+
+                    <i class="bi bi-arrow-right ms-2"></i>
+
+                </a>
+
+            </div>
+
+
+            <div
+                class="welcome-decoration"
+                aria-hidden="true"
+            >
+
+                <i class="bi bi-journal-richtext"></i>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             RINGKASAN AKTIVITAS
+        ========================================== -->
+
+        <section
+            class="mb-5"
+            aria-labelledby="statisticsTitle"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow mb-1">
+                        YOUR OVERVIEW
+                    </p>
+
+                    <h2
+                        class="section-title"
+                        id="statisticsTitle"
+                    >
+                        Ringkasan Aktivitas
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="row g-3">
+
+
+                <!-- TOTAL TUGAS -->
+
+                <div class="col-6 col-xl-3">
+
+                    <article class="stat-card h-100">
+
+                        <div class="stat-top">
+
+                            <span class="stat-icon icon-cream">
+                                <i class="bi bi-journal-text"></i>
+                            </span>
+
+                            <span class="stat-caption">
+                                Semua tugas
+                            </span>
+
+                        </div>
+
+
+                        <p
+                            class="stat-number"
+                            id="totalTasks"
+                        >
+                            0
+                        </p>
+
+                        <p class="stat-label">
+                            Total Tugas
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- BELUM SELESAI -->
+
+                <div class="col-6 col-xl-3">
+
+                    <article class="stat-card h-100">
+
+                        <div class="stat-top">
+
+                            <span class="stat-icon icon-orange">
+                                <i class="bi bi-hourglass-split"></i>
+                            </span>
+
+                            <span class="stat-caption">
+                                Perlu dikerjakan
+                            </span>
+
+                        </div>
+
+
+                        <p
+                            class="stat-number"
+                            id="pendingTasks"
+                        >
+                            0
+                        </p>
+
+                        <p class="stat-label">
+                            Belum Selesai
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SELESAI -->
+
+                <div class="col-6 col-xl-3">
+
+                    <article class="stat-card h-100">
+
+                        <div class="stat-top">
+
+                            <span class="stat-icon icon-green">
+                                <i class="bi bi-check2-circle"></i>
+                            </span>
+
+                            <span class="stat-caption">
+                                Good job!
+                            </span>
+
+                        </div>
+
+
+                        <p
+                            class="stat-number"
+                            id="completedTasks"
+                        >
+                            0
+                        </p>
+
+                        <p class="stat-label">
+                            Tugas Selesai
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <!-- DEADLINE -->
+
+                <div class="col-6 col-xl-3">
+
+                    <article class="stat-card h-100">
+
+                        <div class="stat-top">
+
+                            <span class="stat-icon icon-red">
+                                <i class="bi bi-alarm"></i>
+                            </span>
+
+                            <span class="stat-caption">
+                                Segera periksa
+                            </span>
+
+                        </div>
+
+
+                        <p
+                            class="stat-number"
+                            id="upcomingTasks"
+                        >
+                            0
+                        </p>
+
+                        <p class="stat-label">
+                            Deadline Terdekat
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+        <!-- =========================================
+     NOTIFIKASI DEADLINE
+========================================= -->
+
+<div
+    class="deadline-alert"
+    id="deadlineAlert"
+    role="status"
+    aria-live="polite"
+>
+    <div class="deadline-alert-icon">
+        <i class="bi bi-alarm"></i>
+    </div>
+
+    <div class="deadline-alert-content">
+        <strong id="deadlineAlertTitle">
+            Tidak ada deadline terdekat
+        </strong>
+
+        <p id="deadlineAlertMessage">
+            Semua tugasmu masih aman.
+        </p>
+    </div>
+</div>
+
+
+        <!-- =========================================
+             TUGAS KULIAH
+        ========================================== -->
+
+        <section
+            class="mb-5"
+            id="tasks"
+            aria-labelledby="tasksTitle"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow mb-1">
+                        STAY ORGANIZED
+                    </p>
+
+                    <h2
+                        class="section-title"
+                        id="tasksTitle"
+                    >
+                        Tugas Kuliah
+                    </h2>
+
+                    <p class="section-description">
+                        Satu tugas selesai, satu langkah lebih maju.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-outline-blue"
+                    data-bs-toggle="modal"
+                    data-bs-target="#taskModal"
+                    id="sectionAddTask"
+                >
+
+                    <i class="bi bi-plus-lg me-1"></i>
+                    Tambah
+
+                </button>
+
+            </div>
+
+
+            <!-- PENCARIAN DAN FILTER -->
+
+            <div class="task-toolbar">
+
+                <div class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="search"
+                        id="searchTask"
+                        class="form-control"
+                        placeholder="Cari nama tugas atau mata kuliah..."
+                        aria-label="Cari tugas"
+                    >
+
+                </div>
+
+
+                <div class="filter-controls">
+
+                    <label
+                        for="filterStatus"
+                        class="visually-hidden"
+                    >
+                        Filter status tugas
+                    </label>
+
+                    <select
+                        id="filterStatus"
+                        class="form-select"
+                    >
+
+                        <option value="all">
+                            Semua Status
+                        </option>
+
+                        <option value="pending">
+                            Belum Selesai
+                        </option>
+
+                        <option value="completed">
+                            Selesai
+                        </option>
+
+                    </select>
+
+
+                    <label
+                        for="filterPriority"
+                        class="visually-hidden"
+                    >
+                        Filter prioritas
+                    </label>
+
+                    <select
+                        id="filterPriority"
+                        class="form-select"
+                    >
+
+                        <option value="all">
+                            Semua Prioritas
+                        </option>
+
+                        <option value="high">
+                            Tinggi
+                        </option>
+
+                        <option value="medium">
+                            Sedang
+                        </option>
+
+                        <option value="low">
+                            Rendah
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- DAFTAR TUGAS DIISI JAVASCRIPT -->
+
+            <div
+                id="taskList"
+                class="task-list"
+                aria-live="polite"
+            >
+
+                <div class="empty-state">
+
+                    <i class="bi bi-journal-plus"></i>
+
+                    <h3>
+                        Siap memulai?
+                    </h3>
+
+                    <p>
+                        Tambahkan tugas pertamamu untuk mengisi daftar ini.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <p
+                class="task-footer-note"
+                id="taskResultCount"
+            >
+                Menampilkan daftar tugasmu.
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             JADWAL BELAJAR
+        ========================================== -->
+
+        <section
+            class="mb-5"
+            id="schedule"
+            aria-labelledby="scheduleTitle"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow mb-1">
+                        MAKE TIME FOR YOURSELF
+                    </p>
+
+                    <h2
+                        class="section-title"
+                        id="scheduleTitle"
+                    >
+                        Jadwal Belajar
+                    </h2>
+
+                    <p class="section-description">
+                        Susun waktu belajar agar lebih terarah.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <!-- HEADER AGENDA -->
+
+                <div class="schedule-header">
+
+                    <div>
+
+                        <h3 class="card-heading">
+                            Agenda Mingguan
+                        </h3>
+
+                        <p class="text-muted small mb-0">
+                            Tambahkan jadwal belajarmu sendiri.
+                        </p>
+
+                    </div>
+
+
+                    <div class="schedule-header-actions">
+
+                        <span class="schedule-label">
+
+                            <i class="bi bi-calendar-week me-1"></i>
+                            Weekly planner
+
+                        </span>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-blue"
+                            data-bs-toggle="modal"
+                            data-bs-target="#scheduleModal"
+                            id="addScheduleButton"
+                        >
+
+                            <i class="bi bi-plus-lg me-1"></i>
+                            Tambah Agenda
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!--
+                    AGENDA AKAN DIBUAT
+                    SECARA OTOMATIS OLEH JAVASCRIPT
+                -->
+
+                <div
+                    class="schedule-grid"
+                    id="scheduleList"
+                    aria-live="polite"
+                >
+                </div>
+
+
+                <!-- KONDISI KOSONG -->
+
+                <div
+                    class="schedule-empty"
+                    id="scheduleEmpty"
+                >
+
+                    <i class="bi bi-calendar-plus"></i>
+
+                    <h3>
+                        Belum ada agenda
+                    </h3>
+
+                    <p>
+                        Tambahkan jadwal belajar pertamamu.
+                    </p>
+
+                </div>
+
+
+                <p class="schedule-note">
+
+                    <i class="bi bi-info-circle me-1"></i>
+
+                    Jadwal dapat ditambahkan, diedit, dan dihapus
+                    melalui website.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             PROGRESS BELAJAR
+        ========================================== -->
+
+        <section
+            class="mb-5"
+            id="progress"
+            aria-labelledby="progressTitle"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow mb-1">
+                        SMALL STEPS MATTER
+                    </p>
+
+                    <h2
+                        class="section-title"
+                        id="progressTitle"
+                    >
+                        Progress Belajarku
+                    </h2>
+
+                    <p class="section-description">
+                        Pantau tugas yang telah kamu selesaikan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="row g-3">
+
+
+                <!-- PROGRESS -->
+
+                <div class="col-12 col-lg-7">
+
+                    <article
+                        class="content-card progress-card h-100"
+                    >
+
+                        <div class="progress-card-header">
+
+                            <div>
+
+                                <h3 class="card-heading">
+                                    Penyelesaian Tugas
+                                </h3>
+
+                                <p class="text-muted small">
+                                    Berdasarkan seluruh tugas yang tercatat.
+                                </p>
+
+                            </div>
+
+
+                            <span
+                                class="progress-percentage"
+                                id="progressPercentage"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="progress custom-progress"
+                            role="progressbar"
+                            aria-label="Persentase tugas selesai"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="0"
+                            id="taskProgressBar"
+                        >
+
+                            <div
+                                class="progress-bar"
+                                id="taskProgressFill"
+                                style="width: 0%"
+                            ></div>
+
+                        </div>
+
+
+                        <div class="progress-meta">
+
+                            <span id="progressCompleted">
+                                0 tugas selesai
+                            </span>
+
+                            <span id="progressRemaining">
+                                0 tugas tersisa
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="progress-message"
+                            id="progressMessage"
+                        >
+
+                            <i class="bi bi-stars me-2"></i>
+
+                            Mulai dari satu tugas kecil hari ini.
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- MOTIVASI -->
+
+                <div class="col-12 col-lg-5">
+
+                    <article
+                        class="content-card motivation-card h-100"
+                    >
+
+                        <span class="motivation-icon">
+
+                            <i class="bi bi-cup-hot"></i>
+
+                        </span>
+
+
+                        <p class="eyebrow mb-2">
+                            A LITTLE REMINDER
+                        </p>
+
+
+                        <h3 class="motivation-title">
+
+                            Tidak harus sempurna,
+                            yang penting terus mencoba.
+
+                        </h3>
+
+
+                        <p class="text-muted mb-0">
+
+                            Beri dirimu waktu untuk belajar,
+                            beristirahat, dan berkembang
+                            dengan caramu sendiri.
+
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+                </section>
+
+
+        <!-- =========================================
+             FORM DATA MAHASISWA
+        ========================================== -->
+
+        <section
+            class="mb-5"
+            id="studentForm"
+            aria-labelledby="studentFormTitle"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow mb-1">
+                        STUDENT INFORMATION
+                    </p>
+
+                    <h2
+                        class="section-title"
+                        id="studentFormTitle"
+                    >
+                        Form Data Mahasiswa
+                    </h2>
+
+                    <p class="section-description">
+                        Isi data diri dan hobi kamu.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <form id="studentDataForm">
+
+                    <!-- NAMA -->
+                    <div class="mb-3">
+
+                        <label
+                            for="studentName"
+                            class="form-label"
+                        >
+                            Nama
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="studentName"
+                            placeholder="Masukkan nama"
+                        >
+
+                    </div>
+
+
+                    <!-- ALAMAT -->
+                    <div class="mb-3">
+
+                        <label
+                            for="studentAddress"
+                            class="form-label"
+                        >
+                            Alamat
+                        </label>
+
+                        <textarea
+                            class="form-control"
+                            id="studentAddress"
+                            rows="3"
+                            placeholder="Masukkan alamat"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- KOTA -->
+                    <div class="mb-3">
+
+                        <label
+                            for="studentCity"
+                            class="form-label"
+                        >
+                            Kota
+                        </label>
+
+                        <select
+                            class="form-select"
+                            id="studentCity"
+                        >
+
+                            <option selected disabled>
+                                Pilih kota
+                            </option>
+
+                            <option>Semarang</option>
+                            <option>Kudus</option>
+                            <option>Demak</option>
+                            <option>Pekalongan</option>
+                            <option>Tegal</option>
+                            <option>Surabaya</option>
+                            <option>Jakarta</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- HOBI -->
+                    <div class="mb-4">
+
+                        <label class="form-label d-block">
+                            Hobi
+                        </label>
+
+                        <div class="form-check">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="hobiMembaca"
+                            >
+                            <label
+                                class="form-check-label"
+                                for="hobiMembaca"
+                            >
+                                Membaca
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="hobiKoding"
+                            >
+                            <label
+                                class="form-check-label"
+                                for="hobiKoding"
+                            >
+                                Koding
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="hobiBerenang"
+                            >
+                            <label
+                                class="form-check-label"
+                                for="hobiBerenang"
+                            >
+                                Berenang
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="hobiMenggambar"
+                            >
+                            <label
+                                class="form-check-label"
+                                for="hobiMenggambar"
+                            >
+                                Menggambar
+                            </label>
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-blue"
+                    >
+                        <i class="bi bi-send me-1"></i>
+                        Kirim Data
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FOOTER
+        ========================================== -->
+
+        <footer class="main-footer">
+
+
+        <!-- =========================================
+             FOOTER
+        ========================================== -->
+
+        <footer class="main-footer">
+
+            <p class="mb-1">
+
+                Made with
+                <i class="bi bi-heart-fill"></i>
+            </p>
+            <p>NIM : A12.2025.07415 | NAMA : Nathania Elysia</p>
+
+
+
+            <p class="mb-0">
+
+                &copy;
+                <span id="currentYear">
+                    2026
+                </span>
+
+                StudyMate.
+                Teman belajar mahasiswa.
+
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =========================================
+         MODAL TAMBAH / EDIT TUGAS
+    ========================================== -->
+
+    <div
+        class="modal fade"
+        id="taskModal"
+        tabindex="-1"
+        aria-labelledby="taskModalTitle"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content task-modal-content">
+
+
+                <div class="modal-header">
+
+                    <div>
+
+                        <p class="eyebrow mb-1">
+                            STAY PRODUCTIVE
+                        </p>
+
+                        <h2
+                            class="modal-title fs-5"
+                            id="taskModalTitle"
+                        >
+                            Tambah Tugas Baru
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Tutup"
+                    ></button>
+
+                </div>
+
+
+                <form id="taskForm">
+
+                    <div class="modal-body">
+
+                        <input
+                            type="hidden"
+                            id="taskId"
+                        >
+
+
+                        <!-- NAMA TUGAS -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="taskTitle"
+                                class="form-label"
+                            >
+
+                                Nama Tugas
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="taskTitle"
+                                placeholder="Contoh: Membuat halaman HTML"
+                                maxlength="100"
+                                required
+                            >
+
+
+                            <div class="invalid-feedback">
+
+                                Nama tugas wajib diisi.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- MATA KULIAH -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="taskSubject"
+                                class="form-label"
+                            >
+
+                                Mata Kuliah
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="taskSubject"
+                                placeholder="Contoh: Pemrograman Web"
+                                maxlength="80"
+                                required
+                            >
+
+
+                            <div class="invalid-feedback">
+
+                                Mata kuliah wajib diisi.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DEADLINE -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="taskDeadline"
+                                class="form-label"
+                            >
+
+                                Deadline
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input
+                                type="date"
+                                class="form-control"
+                                id="taskDeadline"
+                                required
+                            >
+
+
+                            <div class="invalid-feedback">
+
+                                Pilih tanggal deadline tugas.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PRIORITAS -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="taskPriority"
+                                class="form-label"
+                            >
+                                Prioritas
+                            </label>
+
+
+                            <select
+                                class="form-select"
+                                id="taskPriority"
+                                required
+                            >
+
+                                <option value="low">
+                                    Rendah
+                                </option>
+
+                                <option
+                                    value="medium"
+                                    selected
+                                >
+                                    Sedang
+                                </option>
+
+                                <option value="high">
+                                    Tinggi
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Batal
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-brown"
+                            id="saveTaskButton"
+                        >
+
+                            <i class="bi bi-check-lg me-1"></i>
+
+                            Simpan Tugas
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         MODAL TAMBAH / EDIT AGENDA
+    ========================================== -->
+
+    <div
+        class="modal fade"
+        id="scheduleModal"
+        tabindex="-1"
+        aria-labelledby="scheduleModalTitle"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content task-modal-content">
+
+
+                <!-- HEADER MODAL -->
+
+                <div class="modal-header">
+
+                    <div>
+
+                        <p class="eyebrow mb-1">
+                            WEEKLY PLANNER
+                        </p>
+
+                        <h2
+                            class="modal-title fs-5"
+                            id="scheduleModalTitle"
+                        >
+                            Tambah Agenda
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Tutup"
+                    ></button>
+
+                </div>
+
+
+                <!-- FORM AGENDA -->
+
+                <form id="scheduleForm">
+
+                    <div class="modal-body">
+
+                        <input
+                            type="hidden"
+                            id="scheduleId"
+                        >
+
+
+                        <!-- HARI -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="scheduleDay"
+                                class="form-label"
+                            >
+
+                                Hari
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <select
+                                class="form-select"
+                                id="scheduleDay"
+                                required
+                            >
+
+                                <option value="">
+                                    Pilih hari
+                                </option>
+
+                                <option value="Senin">
+                                    Senin
+                                </option>
+
+                                <option value="Selasa">
+                                    Selasa
+                                </option>
+
+                                <option value="Rabu">
+                                    Rabu
+                                </option>
+
+                                <option value="Kamis">
+                                    Kamis
+                                </option>
+
+                                <option value="Jumat">
+                                    Jumat
+                                </option>
+
+                                <option value="Sabtu">
+                                    Sabtu
+                                </option>
+
+                                <option value="Minggu">
+                                    Minggu
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- WAKTU -->
+
+                        <div class="row g-3 mb-3">
+
+
+                            <div class="col-6">
+
+                                <label
+                                    for="scheduleStart"
+                                    class="form-label"
+                                >
+
+                                    Mulai
+                                    <span class="text-danger">*</span>
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    class="form-control"
+                                    id="scheduleStart"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="col-6">
+
+                                <label
+                                    for="scheduleEnd"
+                                    class="form-label"
+                                >
+
+                                    Selesai
+                                    <span class="text-danger">*</span>
+
+                                </label>
+
+
+                                <input
+                                    type="time"
+                                    class="form-control"
+                                    id="scheduleEnd"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- KEGIATAN -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="scheduleTitleInput"
+                                class="form-label"
+                            >
+
+                                Kegiatan
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="scheduleTitleInput"
+                                placeholder="Contoh: Pemrograman Web"
+                                maxlength="100"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- KETERANGAN -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="scheduleDescription"
+                                class="form-label"
+                            >
+
+                                Keterangan
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="scheduleDescription"
+                                placeholder="Contoh: Review materi HTML"
+                                maxlength="150"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FOOTER MODAL -->
+
+                    <div class="modal-footer">
+
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Batal
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-brown"
+                            id="saveScheduleButton"
+                        >
+
+                            <i class="bi bi-check-lg me-1"></i>
+
+                            Simpan Agenda
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         BOOTSTRAP JAVASCRIPT
+    ========================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+</body>
+
+</html>
